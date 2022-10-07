@@ -1,8 +1,8 @@
 try {
     window.odata
-    .o(apiUrl)
+    .o(process.env.API_URL)
     .get()
-    .query({ Authorization: apiKey })
+    .query({ Authorization: process.env.API_KEY })
     .then((data) => console.log("DATA: ", data));
 } catch {
     console.log('ERROR LOADING DATA');
