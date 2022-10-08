@@ -10,3 +10,6 @@ try {
 
 // api does not allow fetch from local file system
 // try using insomnia instead
+
+// fetch successful from deployed site but returned error
+// try using insomnia
