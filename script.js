@@ -13,3 +13,5 @@ try {
 
 // fetch successful from deployed site but returned error
 // try using insomnia
+
+// include gzip in header
