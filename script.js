@@ -16,21 +16,20 @@
 
 // include gzip in header
 
-const propertiesDiv = document.getElementById("render-past-sales");
+
+const propertiesDiv = document.getElementById('render-past-sales');
+
 
 // search products
-const getProperties = () => {
+const getProperties = async () => {
 
-  let request = new XMLHttpRequest();
-
-  request.open("GET", "https://www.compass.com/agents/samantha-burnstead/", true);
-
-  request.onload = () => {
-    const doc = new DOMParser().parseFromString(request.responseText, "text/html");
-    propertiesDiv.innerHTML = doc.getElementsByClassName("closedDeals-container").innerHTML;
-  };
-
-  request.send();
+    await fetch(`https://www.compass.com/agents/samantha-burnstead/`)
+        .then(response => {
+            const doc = new DOMParser().parseFromString(response.responseText, 'text/html');
+            propertiesDiv.innerHTML = doc.getElementsByClassName('closedDeals-container');
+        })
+        .then(response => response.products ? setSearchResults(response) : getSuggestions(search))
+        .catch(err => console.error(err));
 
 };
 
